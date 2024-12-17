@@ -22,6 +22,8 @@ export async function GET(req: NextRequest) {
 		const heading =
 			title.length > 140 ? `${title.substring(0, 140)}...` : title;
 
+		const description = "Explore the latest reflections and insights of AK.";
+
 		return new ImageResponse(
 			(
 				<div tw="flex relative flex-col p-12 w-full h-full items-start text-black bg-white">
@@ -38,18 +40,16 @@ export async function GET(req: NextRequest) {
 							<path d="M4 4a16 16 0 0 1 16 16" />
 							<circle cx="5" cy="19" r="1" />
 						</svg>
-						<p tw="ml-2 font-bold text-2xl">JollyBlog</p>
+						<p tw="ml-2 font-bold text-2xl">KAptured</p>
 					</div>
 					<div tw="flex flex-col flex-1 py-10">
-						<div tw="flex text-xl uppercase font-bold tracking-tight font-normal">
-							BLOG POST
-						</div>
+						<div tw="flex text-xl font-bold tracking-tight font-normal">{description}</div>
 						<div tw="flex text-[80px] font-bold text-[50px]">{heading}</div>
 					</div>
 					<div tw="flex items-center w-full justify-between">
 						<div tw="flex text-xl">{siteConfig.url}</div>
 						<div tw="flex items-center text-xl">
-							<div tw="flex ml-2">{siteConfig.links.github}</div>
+							<div tw="flex ml-2">{siteConfig.links.instagram}</div>
 						</div>
 					</div>
 				</div>
@@ -67,7 +67,7 @@ export async function GET(req: NextRequest) {
 				],
 			}
 		);
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	} catch (error) {
 		return new Response("Failed to generate image", { status: 500 });
 	}

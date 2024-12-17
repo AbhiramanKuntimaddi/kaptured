@@ -5,22 +5,23 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 interface PostPageProps {
-	params: {
+	params: Promise<{
 		slug: string[];
-	};
+	}>;
 }
 
-async function getPostFromParams(params: PostPageProps["params"]) {
-	const slug = params?.slug?.join("/");
+async function getPostFromParams(params: Awaited<PostPageProps["params"]>) {
+	const resolvedParams = await params;
+	const slug = resolvedParams?.slug?.join("/");
 	const post = posts.find((post) => post.slugAsParams === slug);
-
 	return post;
 }
 
 export async function generateMetadata({
 	params,
 }: PostPageProps): Promise<Metadata> {
-	const post = await getPostFromParams(params);
+	const resolvedParams = await params;
+	const post = await getPostFromParams(resolvedParams);
 
 	if (!post) {
 		return {};
@@ -56,24 +57,19 @@ export async function generateMetadata({
 	};
 }
 
-export async function generateStaticParams(): Promise<
-	PostPageProps["params"][]
-> {
-	return posts.map((post) => ({ slug: post.slugAsParams.split("/") }));
-}
-
 export default async function PostPage({ params }: PostPageProps) {
-	const post = await getPostFromParams(params);
+	const resolvedParams = await params;
+	const post = await getPostFromParams(resolvedParams);
 
 	if (!post || !post.published) {
 		notFound();
 	}
 
 	return (
-		<article className="container py-6 prose dark:prose-invert max-w-3xl mx-auto">
-			<h1 className="mb-2">{post.title}</h1>
+		<article className="container py-6 prose dark:prose-invert max-w-3xl mx-auto mt-5">
+			<h1 className="mb-2 text-accent font-semibold">{post.title}</h1>
 			{post.description ? (
-				<p className="text-xl mt-0 text-muted-foreground">{post.description}</p>
+				<p className="text-xl mt-0 text-text">{post.description}</p>
 			) : null}
 			<hr className="my-4" />
 			<MDXContent code={post.body} />

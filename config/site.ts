@@ -1,11 +1,11 @@
 export const siteConfig = {
-	name: "kaptured",
+	name: "KAptured",
 	url: "https://example.com",
-	description: "Personal blog using NextJS, tailwind and shadcn",
+	description:
+		"Crafted with care, a hint of curiosity and some cool technology",
 	author: "Abhiraman Kuntimaddi",
 	links: {
-		twitter: "https://x.com/AbhiramanK",
-		github: "https://github.com/AbhiramanKuntimaddi",
+		instagram: "https://www.instagram.com/_ka_ptured_",
 		personalSite: "https://akport.vercel.app",
 	},
 };
