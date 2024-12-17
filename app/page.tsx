@@ -23,7 +23,7 @@ export default function Home() {
 						</span>
 					</h1>
 					<h1 className=" font-normal text-text text-balance leading-tight italic mt-6">
-						What sparks your curiosity today?
+          What sparks your curiosity today? Step into my space, where ideas and reflections await to nourish your mind.
 					</h1>
 					<p className="max-w-[42rem] mx-auto sm:text-xl text-balance mt-6 text-text">
 						Where thoughts unfold into stories, and experiences blossom into

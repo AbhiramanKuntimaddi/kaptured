@@ -42,7 +42,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 					</p>
 				</div>
 			</div>
-			<h1 className="inline-block font-black text-4xl lg:text-5xl mt-10">Reflections and Insights</h1>
+			<h1 className="inline-block font-black text-4xl lg:text-5xl mt-10">The Thought Space</h1>
 			<hr className="mt-8" />
 			{displayPosts?.length > 0 ? (
 				<ul className="flex flex-col">

@@ -2,6 +2,7 @@ import { posts } from "@/.velite";
 import { MDXContent } from "@/components/mdx-components";
 import { siteConfig } from "@/config/site";
 import { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface PostPageProps {
@@ -73,6 +74,13 @@ export default async function PostPage({ params }: PostPageProps) {
 			) : null}
 			<hr className="my-4" />
 			<MDXContent code={post.body} />
+			<div className="mt-6">
+				<Link
+					href="/blog"
+					className="inline-block text-white bg-primary py-2 px-4 rounded-lg hover:bg-primary-dark transition">
+					Back to The Thought Space
+				</Link>
+			</div>
 		</article>
 	);
 }
